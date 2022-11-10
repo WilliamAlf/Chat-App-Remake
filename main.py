@@ -3,8 +3,16 @@ import utils.repl as repl
 from utils.prompts import *
 from chat import Chat
 
+"""
+TODO : 
+    1. Flytta command_list till mer lämpligt ställe
+    2. Improve error prints to automatically format based on error class
+"""
+
 
 class Main:
+    command_list = menu_commands = ["start chat", "start server", "exit"]
+    
     chat = None
     server = None
     
@@ -14,22 +22,22 @@ class Main:
     
     def start_program(self):
         print()
-        print_success("start", "Entering REPL")
+        prompt_success("Welcome")
         repl.start_repl(self)
                     
     
     def start_chat(self):
-        print_success("chat started", "entering chatmode")
+        prompt_status("chat started", "entering chatmode")
         self.chat = Chat()
     
 
     def start_server(self):
-        time.sleep(10)
-        print("time out")
+        time.sleep(3)
+        print("\ntime out")
 
 
     def stop_program(self):
-        print_success("end", "program stopped", "\n")
+        prompt_status("Goodbye", "program stopped", "\n")
 
 
 if __name__ == "__main__":
